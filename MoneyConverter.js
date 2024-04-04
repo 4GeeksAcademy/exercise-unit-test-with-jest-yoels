@@ -13,9 +13,20 @@ function fromDollarToEuro(dollar){
 }
 
 function fromDollarToYen(dollar){
-    let euroToYen = fromEuroToDollar(dollar) * 156.5
+    let euroToYen = fromDollarToEuro(dollar) * 156.5
+    return parseFloat(euroToYen.toFixed(3));
 }
 
-console.log(fromDollarToEuro(1));
+function fromYenToEuro(yen){
+    let euroToYen = yen / 156.5
+    return parseFloat(euroToYen.toFixed(3));
+}
 
-module.exports = {sum, fromEuroToDollar, fromDollarToEuro};
+function fromYenToPound(yen){
+    let pound = fromYenToEuro(yen) * 0.87
+    return parseFloat(pound.toFixed(3))
+}
+
+console.log(fromYenToPound(290));
+
+module.exports = {sum, fromEuroToDollar, fromDollarToEuro, fromDollarToYen, fromYenToPound};
